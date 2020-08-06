@@ -1,13 +1,5 @@
-[package]
-name = "overlee"
-version = "0.1.0"
-authors = ["Davis Van Sant <davisvansant@users.noreply.github.com>"]
-edition = "2018"
+[workspace]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-tonic = "0.3.0" 
-
-[build-dependencies]
-tonic-build = "0.3.0"
+members = [
+  "overlee_build"
+]
