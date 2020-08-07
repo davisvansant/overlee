@@ -1,0 +1,32 @@
+syntax = "proto3";
+package the_rentals;
+
+service Discography {
+  rpc Albums (GetAlbums) returns (AllAlbums) {};
+  rpc Eps (GetEps) returns (AllEps) {};
+  rpc Singles (GetSingles) returns (AllSingles) {};
+}
+
+message GetAlbums {
+  repeated AllAlbums albums = 1;
+}
+
+message AllAlbums {
+  map<string, string> albums = 1;
+}
+
+message GetEps {
+  repeated AllEps eps = 1;
+}
+
+message AllEps {
+  map<string, string> eps = 1;
+}
+
+message GetSingles {
+  repeated AllSingles singles = 1;
+}
+
+message AllSingles {
+  map<string, string> singles = 1;
+}
