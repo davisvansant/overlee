@@ -3,7 +3,9 @@ package the_rentals;
 
 service Discography {
   rpc Albums (GetAlbums) returns (AllAlbums) {};
+  rpc Album (GetAlbum) returns (AlbumTracks) {};
   rpc Eps (GetEps) returns (AllEps) {};
+  rpc Ep (GetEp) returns (EpTracks) {};
   rpc Singles (GetSingles) returns (AllSingles) {};
 }
 
@@ -15,12 +17,42 @@ message AllAlbums {
   map<string, string> albums = 1;
 }
 
+message GetAlbum {
+  enum Release {
+    UNKNOWN = 0;
+    FIRST = 1;
+    SECOND = 2;
+    THIRD = 3;
+    FOURTH = 4;
+  }
+  Release album = 1;
+}
+
+message AlbumTracks {
+  map<string, string> album_tracks = 1;
+}
+
 message GetEps {
   repeated AllEps eps = 1;
 }
 
 message AllEps {
   map<string, string> eps = 1;
+}
+
+message GetEp {
+  enum Release {
+    UNKNOWN = 0;
+    FIRST = 1;
+    SECOND = 2;
+    THIRD = 3;
+    FOURTH = 4;
+  }
+  Release ep = 1;
+}
+
+message EpTracks {
+  map<string, string> ep_tracks = 1;
 }
 
 message GetSingles {
