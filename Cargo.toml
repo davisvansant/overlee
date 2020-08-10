@@ -1,5 +1,6 @@
 [workspace]
 
 members = [
-  "overlee_build"
+  "overlee_build",
+  "overlee_server"
 ]
