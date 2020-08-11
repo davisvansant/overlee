@@ -45,7 +45,27 @@ impl Discography for TheRentals {
 
     async fn eps(&self, request: Request<GetEps>) -> Result<Response<AllEps>, Status> {
         println!("All Eps! {:?}", request);
-        unimplemented!()
+        // unimplemented!()
+        let mut reply = the_rentals::AllEps { eps: Vec::new() };
+        let mut all_eps = the_rentals::all_eps::Ep { ep: HashMap::new() };
+        all_eps.ep.insert(
+            String::from("08.14.2007"),
+            String::from("The Last Little Life EP"),
+        );
+        all_eps.ep.insert(
+            String::from("04.07.2009"),
+            String::from("Songs About Time: Chapter One: The Story of a Thousand Seasons Past"),
+        );
+        all_eps.ep.insert(
+            String::from("07.07.2009"),
+            String::from("Songs About Time: Chapter Two: It's Time to Come Home"),
+        );
+        all_eps.ep.insert(
+            String::from("10.20.2009"),
+            String::from("Songs About Time: Chapter Three: The Future"),
+        );
+        reply.eps.push(all_eps);
+        Ok(Response::new(reply))
     }
 
     async fn ep(&self, request: Request<GetEp>) -> Result<Response<Release>, Status> {
