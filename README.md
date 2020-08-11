@@ -12,3 +12,8 @@ grpcurl -plaintext -import-path ./overlee_build/proto -proto the_rentals.proto -
 ```
 grpcurl -plaintext -import-path ./overlee_build/proto -proto the_rentals.proto -format "text"  localhost:50052 the_rentals.Discography/Eps
 ```
+
+- Singles Service
+```
+grpcurl -plaintext -import-path ./overlee_build/proto -proto the_rentals.proto -format "text"  localhost:8080 the_rentals.Discography/Singles
+```
