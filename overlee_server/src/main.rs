@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 use tonic::{transport::Server, Request, Response, Status};
 
-use crate::the_rentals::all_albums::Album;
 use the_rentals::discography_server::*;
 use the_rentals::{
     AllAlbums, AllEps, AllSingles, GetAlbum, GetAlbums, GetEp, GetEps, GetSingles, Release,
