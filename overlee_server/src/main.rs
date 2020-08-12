@@ -23,18 +23,21 @@ impl Discography for TheRentals {
         let mut all_albums = the_rentals::all_albums::Album {
             album: HashMap::new(),
         };
+        all_albums.album.insert(
+            String::from("10.24.1995"),
+            String::from("Return of the Rentals"),
+        );
+        all_albums.album.insert(
+            String::from("4.13.1999"),
+            String::from("Seven more Minutes"),
+        );
+        all_albums.album.insert(
+            String::from("8.22.2014"),
+            String::from("Lost in Alphaville"),
+        );
         all_albums
             .album
-            .insert(String::from("1995"), String::from("Return of the Rentals"));
-        all_albums
-            .album
-            .insert(String::from("1999"), String::from("Seven more Minutes"));
-        all_albums
-            .album
-            .insert(String::from("2014"), String::from("Lost in Alphaville"));
-        all_albums
-            .album
-            .insert(String::from("2020"), String::from("Q36"));
+            .insert(String::from("6.26.2020"), String::from("Q36"));
         reply.albums.push(all_albums);
         Ok(Response::new(reply))
     }
