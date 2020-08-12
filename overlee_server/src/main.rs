@@ -18,6 +18,7 @@ pub mod the_rentals {
 impl Discography for TheRentals {
     async fn albums(&self, request: Request<GetAlbums>) -> Result<Response<AllAlbums>, Status> {
         println!("All Albums! {:?}", request);
+
         let mut reply = the_rentals::AllAlbums { albums: Vec::new() };
         let mut all_albums = the_rentals::all_albums::Album {
             album: HashMap::new(),
@@ -45,7 +46,7 @@ impl Discography for TheRentals {
 
     async fn eps(&self, request: Request<GetEps>) -> Result<Response<AllEps>, Status> {
         println!("All Eps! {:?}", request);
-        // unimplemented!()
+
         let mut reply = the_rentals::AllEps { eps: Vec::new() };
         let mut all_eps = the_rentals::all_eps::Ep { ep: HashMap::new() };
         all_eps.ep.insert(
@@ -75,81 +76,71 @@ impl Discography for TheRentals {
 
     async fn singles(&self, request: Request<GetSingles>) -> Result<Response<AllSingles>, Status> {
         println!("Singles! {:?}", request);
-        // unimplemented!()
-        let mut reply = the_rentals::AllSingles { singles: Vec::new() };
-        let mut all_singles = the_rentals::all_singles::Single { single: HashMap::new() };
-        all_singles.single.insert(
-            String::from("1995.1"),
-            String::from("Friends of P."),
-        );
-        all_singles.single.insert(
-            String::from("1996.1"),
-            String::from("Waiting"),
-        );
-        all_singles.single.insert(
-            String::from("1999.1"),
-            String::from("Getting By"),
-        );
-        all_singles.single.insert(
-            String::from("2008.1"),
-            String::from("Colorado"),
-        );
-        all_singles.single.insert(
-            String::from("2014.1"),
-            String::from("Thought of Sound"),
-        );
-        all_singles.single.insert(
-            String::from("2014.2"),
-            String::from("1000 Seasons"),
-        );
+
+        let mut reply = the_rentals::AllSingles {
+            singles: Vec::new(),
+        };
+        let mut all_singles = the_rentals::all_singles::Single {
+            single: HashMap::new(),
+        };
+
+        all_singles
+            .single
+            .insert(String::from("1995.1"), String::from("Friends of P."));
+        all_singles
+            .single
+            .insert(String::from("1996.1"), String::from("Waiting"));
+        all_singles
+            .single
+            .insert(String::from("1999.1"), String::from("Getting By"));
+        all_singles
+            .single
+            .insert(String::from("2008.1"), String::from("Colorado"));
+        all_singles
+            .single
+            .insert(String::from("2014.1"), String::from("Thought of Sound"));
+        all_singles
+            .single
+            .insert(String::from("2014.2"), String::from("1000 Seasons"));
         all_singles.single.insert(
             String::from("2017.1"),
             String::from("Elon Musk is Making Me Sad"),
         );
-        all_singles.single.insert(
-            String::from("2019.1"),
-            String::from("Spaceships"),
-        );
-        all_singles.single.insert(
-            String::from("2019.2"),
-            String::from("Forgotten Astronaut"),
-        );
-        all_singles.single.insert(
-            String::from("2019.3"),
-            String::from("9th Configuration"),
-        );
+        all_singles
+            .single
+            .insert(String::from("2019.1"), String::from("Spaceships"));
+        all_singles
+            .single
+            .insert(String::from("2019.2"), String::from("Forgotten Astronaut"));
+        all_singles
+            .single
+            .insert(String::from("2019.3"), String::from("9th Configuration"));
         all_singles.single.insert(
             String::from("2019.4"),
             String::from("Breaking and Breaking and Breaking"),
         );
-        all_singles.single.insert(
-            String::from("2019.5"),
-            String::from("Invasion Night"),
-        );
-        all_singles.single.insert(
-            String::from("2020.1"),
-            String::from("Nowhere Girl"),
-        );
-        all_singles.single.insert(
-            String::from("2020.2"),
-            String::from("Great Big Blue"),
-        );
+        all_singles
+            .single
+            .insert(String::from("2019.5"), String::from("Invasion Night"));
+        all_singles
+            .single
+            .insert(String::from("2020.1"), String::from("Nowhere Girl"));
+        all_singles
+            .single
+            .insert(String::from("2020.2"), String::from("Great Big Blue"));
         all_singles.single.insert(
             String::from("2020.3"),
             String::from("Above This Broken World"),
         );
-        all_singles.single.insert(
-            String::from("2020.4"),
-            String::from("Teen Beat Cosmonaut"),
-        );
-        all_singles.single.insert(
-            String::from("2020.5"),
-            String::from("Another World"),
-        );
-        all_singles.single.insert(
-            String::from("2020.6"),
-            String::from("Conspiracy"),
-        );
+        all_singles
+            .single
+            .insert(String::from("2020.4"), String::from("Teen Beat Cosmonaut"));
+        all_singles
+            .single
+            .insert(String::from("2020.5"), String::from("Another World"));
+        all_singles
+            .single
+            .insert(String::from("2020.6"), String::from("Conspiracy"));
         all_singles.single.insert(
             String::from("2020.7"),
             String::from("Elon Musk Is Making Me Sad (Q36 version)"),
@@ -158,18 +149,15 @@ impl Discography for TheRentals {
             String::from("2020.8"),
             String::from("Information (and the Island in the Sky)"),
         );
-        all_singles.single.insert(
-            String::from("2020.9"),
-            String::from("Machine Love"),
-        );
-        all_singles.single.insert(
-            String::from("2020.10"),
-            String::from("Goodbye, Steve"),
-        );
-        all_singles.single.insert(
-            String::from("2020.11"),
-            String::from("Shake Your Diamonds"),
-        );
+        all_singles
+            .single
+            .insert(String::from("2020.9"), String::from("Machine Love"));
+        all_singles
+            .single
+            .insert(String::from("2020.10"), String::from("Goodbye, Steve"));
+        all_singles
+            .single
+            .insert(String::from("2020.11"), String::from("Shake Your Diamonds"));
         reply.singles.push(all_singles);
         Ok(Response::new(reply))
     }
@@ -180,7 +168,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = "[::0]:8080".parse().unwrap();
     let discography = TheRentals::default();
 
-    println!("GreeterServer listening on {}", addr);
+    println!("Overlee is listening on {}", addr);
 
     Server::builder()
         .add_service(DiscographyServer::new(discography))
