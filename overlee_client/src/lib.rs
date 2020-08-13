@@ -17,24 +17,39 @@ pub mod the_rentals {
 pub async fn get_albums(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
     let request = tonic::Request::new(GetAlbums {});
     let response = client.albums(request).await?;
-    println!("Albums {:?}", response);
-
+    let message = response.into_inner();
+    for release in message.albums {
+        println!("All the albums!");
+        for (k, v) in release.album.iter() {
+            println!(" ~ title . {} ~ release date . {}", v, k);
+        }
+    }
     Ok(())
 }
 
 pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
     let request = tonic::Request::new(GetEps {});
     let response = client.eps(request).await?;
-    println!("Albums {:?}", response);
-
+    let message = response.into_inner();
+    for release in message.eps {
+        println!("All the eps!");
+        for (k, v) in release.ep.iter() {
+            println!(" ~ title . {} ~ release date . {}", v, k);
+        }
+    }
     Ok(())
 }
 
 pub async fn get_singles(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
     let request = tonic::Request::new(GetSingles {});
     let response = client.singles(request).await?;
-    println!("Albums {:?}", response);
-
+    let message = response.into_inner();
+    for release in message.singles {
+        println!("All the singles!");
+        for (k, v) in release.single.iter() {
+            println!(" ~ title . {} ~ release date . {}", v, k);
+        }
+    }
     Ok(())
 }
 
