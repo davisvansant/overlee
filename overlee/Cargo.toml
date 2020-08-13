@@ -1,0 +1,11 @@
+[package]
+name = "overlee"
+version = "0.1.0"
+authors = ["Davis Van Sant <davisvansant@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+overlee_client = { path = "../overlee_client" }
+tokio = { version = "0.2.22", features = ["macros", "sync", "stream", "time"] }

@@ -3,5 +3,6 @@
 members = [
   "overlee_build",
   "overlee_server",
-  "overlee_client"
+  "overlee_client",
+  "overlee"
 ]
