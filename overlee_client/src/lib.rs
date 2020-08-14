@@ -27,6 +27,10 @@ pub async fn get_albums(client: &mut DiscographyClient<Channel>) -> Result<(), B
     Ok(())
 }
 
+pub async fn get_album(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
+    unimplemented!();
+}
+
 pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
     let request = tonic::Request::new(GetEps {});
     let response = client.eps(request).await?;
@@ -38,6 +42,10 @@ pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<
         }
     }
     Ok(())
+}
+
+pub fn get_ep(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
+    unimplemented!();
 }
 
 pub async fn get_singles(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
