@@ -43,7 +43,27 @@ impl Discography for TheRentals {
 
     async fn album(&self, request: Request<GetAlbum>) -> Result<Response<Release>, Status> {
         println!("Release! {:?}", request);
-        unimplemented!()
+        let mut reply = the_rentals::Release {
+            id: String::from("1"),
+            name: String::from("generic_release"),
+            release_type: 1,
+            release_date: String::from("some awesome release date"),
+            track_listing: Vec::new(),
+        };
+        let mut track_listing = the_rentals::release::TrackListing {
+            tracks: HashMap::new(),
+        };
+        track_listing
+            .tracks
+            .insert(String::from("one"), String::from("track one"));
+        track_listing
+            .tracks
+            .insert(String::from("two"), String::from("track two"));
+        track_listing
+            .tracks
+            .insert(String::from("three"), String::from("track three"));
+        reply.track_listing.push(track_listing);
+        Ok(Response::new(reply))
     }
 
     async fn eps(&self, request: Request<GetEps>) -> Result<Response<AllEps>, Status> {
