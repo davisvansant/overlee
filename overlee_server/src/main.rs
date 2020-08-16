@@ -41,28 +41,239 @@ impl Discography for TheRentals {
     }
 
     async fn album(&self, request: Request<GetAlbum>) -> Result<Response<Release>, Status> {
-        println!("Release! {:?}", request);
-        let mut reply = the_rentals::Release {
-            id: String::from("1"),
-            name: String::from("generic_release"),
-            release_type: 1,
-            release_date: String::from("some awesome release date"),
-            track_listing: Vec::new(),
+        println!("Incoming request from : {:?}", request.remote_addr());
+        println!("Requesting Album id : {:?}", request.get_ref().album_id);
+        for v in request.metadata().values() {
+            match v {
+                ValueRef::Ascii(ref v) => println!("Request metadata : {:?} ", v),
+                ValueRef::Binary(ref v) => println!("Request metadata : {:?}", v),
+            }
+        }
+        let release = match request.into_inner().album_id {
+            1 => {
+                let mut album = the_rentals::Release {
+                    id: String::from("1"),
+                    name: String::from("Return of the Rentals"),
+                    release_type: 1,
+                    release_date: String::from("1995.10.24"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
+                track_listing.tracks.insert(
+                    String::from("1"),
+                    String::from("The Love I'm Searching For"),
+                );
+                track_listing
+                    .tracks
+                    .insert(String::from("2"), String::from("Waiting"));
+                track_listing
+                    .tracks
+                    .insert(String::from("3"), String::from("Friends of P."));
+                track_listing
+                    .tracks
+                    .insert(String::from("4"), String::from("Move On"));
+                track_listing
+                    .tracks
+                    .insert(String::from("5"), String::from("Please Let That Be You"));
+                track_listing
+                    .tracks
+                    .insert(String::from("6"), String::from("My Summer Girl"));
+                track_listing
+                    .tracks
+                    .insert(String::from("7"), String::from("Brilliant Boy"));
+                track_listing
+                    .tracks
+                    .insert(String::from("8"), String::from("Naive"));
+                track_listing
+                    .tracks
+                    .insert(String::from("9"), String::from("These Days"));
+                track_listing
+                    .tracks
+                    .insert(String::from("10"), String::from("Sweetness and Tenderness"));
+                album.track_listing.push(track_listing);
+                Ok(album)
+            }
+            2 => {
+                let mut album = the_rentals::Release {
+                    id: String::from("2"),
+                    name: String::from("Seven More Minutes"),
+                    release_type: 1,
+                    release_date: String::from("1999.04.13"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
+                track_listing
+                    .tracks
+                    .insert(String::from("1"), String::from("Getting By"));
+                track_listing
+                    .tracks
+                    .insert(String::from("2"), String::from("Hello, Hello"));
+                track_listing
+                    .tracks
+                    .insert(String::from("3"), String::from("She Says Its Alright"));
+                track_listing
+                    .tracks
+                    .insert(String::from("4"), String::from("The Cruise"));
+                track_listing
+                    .tracks
+                    .insert(String::from("5"), String::from("Barcelona"));
+                track_listing
+                    .tracks
+                    .insert(String::from("6"), String::from("Say Goodbye Forever"));
+                track_listing
+                    .tracks
+                    .insert(String::from("7"), String::from("Overlee"));
+                track_listing
+                    .tracks
+                    .insert(String::from("8"), String::from("Big Daddy C."));
+                track_listing
+                    .tracks
+                    .insert(String::from("9"), String::from("Keep Sleeping"));
+                track_listing
+                    .tracks
+                    .insert(String::from("10"), String::from("The Man with Two Brains"));
+                track_listing
+                    .tracks
+                    .insert(String::from("11"), String::from("Must Be Wrong"));
+                track_listing
+                    .tracks
+                    .insert(String::from("12"), String::from("Insomnia"));
+                track_listing
+                    .tracks
+                    .insert(String::from("13"), String::from("Its Alright (Reprise)"));
+                track_listing
+                    .tracks
+                    .insert(String::from("14"), String::from("My Head Is in the Sun"));
+                track_listing
+                    .tracks
+                    .insert(String::from("15"), String::from("Jumping Around"));
+                album.track_listing.push(track_listing);
+                Ok(album)
+            }
+            3 => {
+                let mut album = the_rentals::Release {
+                    id: String::from("3"),
+                    name: String::from("Lost in Alphaville"),
+                    release_type: 1,
+                    release_date: String::from("2014.08.22"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
+                track_listing
+                    .tracks
+                    .insert(String::from("1"), String::from("It's Time to Come Home"));
+                track_listing
+                    .tracks
+                    .insert(String::from("2"), String::from("Traces of Our Tears"));
+                track_listing
+                    .tracks
+                    .insert(String::from("3"), String::from("Stardust"));
+                track_listing
+                    .tracks
+                    .insert(String::from("4"), String::from("1000 Seasons"));
+                track_listing
+                    .tracks
+                    .insert(String::from("5"), String::from("Damaris"));
+                track_listing
+                    .tracks
+                    .insert(String::from("6"), String::from("Irrational Things"));
+                track_listing
+                    .tracks
+                    .insert(String::from("7"), String::from("Thought of Sound"));
+                track_listing
+                    .tracks
+                    .insert(String::from("8"), String::from("Song of Remembering"));
+                track_listing
+                    .tracks
+                    .insert(String::from("9"), String::from("Seven Years"));
+                track_listing
+                    .tracks
+                    .insert(String::from("10"), String::from("The Future"));
+                album.track_listing.push(track_listing);
+                Ok(album)
+            }
+            4 => {
+                let mut album = the_rentals::Release {
+                    id: String::from("4"),
+                    name: String::from("Q36"),
+                    release_type: 1,
+                    release_date: String::from("2020.06.26"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
+                track_listing
+                    .tracks
+                    .insert(String::from("1"), String::from("Shake Your Diamonds"));
+                track_listing
+                    .tracks
+                    .insert(String::from("2"), String::from("Nowhere Girl"));
+                track_listing
+                    .tracks
+                    .insert(String::from("3"), String::from("9th Configuration"));
+                track_listing
+                    .tracks
+                    .insert(String::from("4"), String::from("Tean Beat Cosmonaut"));
+                track_listing
+                    .tracks
+                    .insert(String::from("5"), String::from("Above This Broken World"));
+                track_listing
+                    .tracks
+                    .insert(String::from("6"), String::from("Forgotten Astronaut"));
+                track_listing
+                    .tracks
+                    .insert(String::from("7"), String::from("Conspiracy"));
+                track_listing.tracks.insert(
+                    String::from("8"),
+                    String::from("Breaking and Breaking and Breaking"),
+                );
+                track_listing
+                    .tracks
+                    .insert(String::from("9"), String::from("Great Big Blue"));
+                track_listing.tracks.insert(
+                    String::from("10"),
+                    String::from("Information (And The Island In The Sky)"),
+                );
+                track_listing
+                    .tracks
+                    .insert(String::from("11"), String::from("Spaceships"));
+                track_listing
+                    .tracks
+                    .insert(String::from("12"), String::from("Goodbye, Steve"));
+                track_listing
+                    .tracks
+                    .insert(String::from("13"), String::from("Invasion Night"));
+                track_listing
+                    .tracks
+                    .insert(String::from("14"), String::from("Another World"));
+                track_listing
+                    .tracks
+                    .insert(String::from("15"), String::from("Machine Love"));
+                track_listing.tracks.insert(
+                    String::from("16"),
+                    String::from("Elon Musk is Making Me Sad"),
+                );
+                album.track_listing.push(track_listing);
+                Ok(album)
+            }
+            _ => {
+                let message =
+                    String::from("The requested Album was not found... please try again!");
+                let status = Status::new(Code::NotFound, message);
+                Err(status)
+            }
         };
-        let mut track_listing = the_rentals::release::TrackListing {
-            tracks: HashMap::new(),
-        };
-        track_listing
-            .tracks
-            .insert(String::from("one"), String::from("track one"));
-        track_listing
-            .tracks
-            .insert(String::from("two"), String::from("track two"));
-        track_listing
-            .tracks
-            .insert(String::from("three"), String::from("track three"));
-        reply.track_listing.push(track_listing);
-        Ok(Response::new(reply))
+        match release {
+            Ok(response_ok) => Ok(Response::new(response_ok)),
+            Err(response_error) => Err(response_error),
+        }
     }
 
     async fn eps(&self, request: Request<GetEps>) -> Result<Response<AllEps>, Status> {
