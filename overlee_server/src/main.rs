@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use tonic::Code;
 use tonic::{transport::Server, Request, Response, Status};
 
 use the_rentals::discography_server::*;
@@ -92,28 +93,65 @@ impl Discography for TheRentals {
     }
 
     async fn ep(&self, request: Request<GetEp>) -> Result<Response<Release>, Status> {
-        println!("Ep Release! {:?}", request);
-        let mut reply = the_rentals::Release {
-            id: String::from("1"),
-            name: String::from("generic_ep_release"),
-            release_type: 2,
-            release_date: String::from("some awesome ep release date"),
-            track_listing: Vec::new(),
+        println!("Requesting Ep id {:?} ...", request.get_ref().ep_id);
+        let reply = match request.into_inner().ep_id {
+            1 => {
+                let mut reply = the_rentals::Release {
+                    id: String::from("1"),
+                    name: String::from("ep release one"),
+                    release_type: 2,
+                    release_date: String::from("some awesome first ep release date"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
+                track_listing
+                    .tracks
+                    .insert(String::from("one"), String::from("track one from ep 1"));
+                track_listing
+                    .tracks
+                    .insert(String::from("two"), String::from("track two from ep 1"));
+                track_listing
+                    .tracks
+                    .insert(String::from("three"), String::from("track three from ep 1"));
+                reply.track_listing.push(track_listing);
+                Ok(reply)
+            }
+            2 => {
+                let mut reply = the_rentals::Release {
+                    id: String::from("2"),
+                    name: String::from("ep release 2"),
+                    release_type: 2,
+                    release_date: String::from("some awesome second ep release date"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
+                track_listing
+                    .tracks
+                    .insert(String::from("one"), String::from("track one from ep 2"));
+                track_listing
+                    .tracks
+                    .insert(String::from("two"), String::from("track two from ep 2"));
+                track_listing
+                    .tracks
+                    .insert(String::from("three"), String::from("track three from ep 3"));
+                reply.track_listing.push(track_listing);
+                Ok(reply)
+            }
+            _ => {
+                let message = String::from("The requested EP was not found... please try again!");
+                let status = Status::new(Code::NotFound, message);
+                Err(status)
+            }
         };
-        let mut track_listing = the_rentals::release::TrackListing {
-            tracks: HashMap::new(),
-        };
-        track_listing
-            .tracks
-            .insert(String::from("one"), String::from("track one"));
-        track_listing
-            .tracks
-            .insert(String::from("two"), String::from("track two"));
-        track_listing
-            .tracks
-            .insert(String::from("three"), String::from("track three"));
-        reply.track_listing.push(track_listing);
-        Ok(Response::new(reply))
+
+        match reply {
+            Ok(resp) => Ok(Response::new(resp)),
+            Err(e) => Err(e),
+        }
     }
 
     async fn singles(&self, request: Request<GetSingles>) -> Result<Response<AllSingles>, Status> {
