@@ -8,6 +8,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     overlee_client::get_eps(&mut client).await?;
     overlee_client::get_singles(&mut client).await?;
     overlee_client::get_album(&mut client).await?;
+    overlee_client::get_ep(&mut client).await?;
 
     Ok(())
 }

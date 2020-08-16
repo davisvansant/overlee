@@ -56,8 +56,20 @@ pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<
     Ok(())
 }
 
-pub fn get_ep(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
-    unimplemented!();
+pub async fn get_ep(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
+    let request = tonic::Request::new(GetEp { ep_id: 1 });
+    let response = client.ep(request).await?;
+    let message = response.into_inner();
+    println!("EP id : {:?}", message.id);
+    println!("EP name :{:?}", message.name);
+    println!("EP release_type : {:?}", message.release_type);
+    println!("EP release date{:?}", message.release_date);
+    for tracks in message.track_listing.iter() {
+        for (k, v) in tracks.tracks.iter() {
+            println!(" ~ track . {} ~ title . {}", k, v);
+        }
+    }
+    Ok(())
 }
 
 pub async fn get_singles(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
