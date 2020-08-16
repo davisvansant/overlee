@@ -28,7 +28,19 @@ pub async fn get_albums(client: &mut DiscographyClient<Channel>) -> Result<(), B
 }
 
 pub async fn get_album(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
-    unimplemented!();
+    let request = tonic::Request::new(GetAlbum { album_id: 1 });
+    let response = client.album(request).await?;
+    let message = response.into_inner();
+    println!("Album id : {:?}", message.id);
+    println!("Album name :{:?}", message.name);
+    println!("Album release_type : {:?}", message.release_type);
+    println!("Album release date{:?}", message.release_date);
+    for tracks in message.track_listing.iter() {
+        for (k, v) in tracks.tracks.iter() {
+            println!(" ~ track . {} ~ title . {}", k, v);
+        }
+    }
+    Ok(())
 }
 
 pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
