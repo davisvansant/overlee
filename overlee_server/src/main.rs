@@ -102,9 +102,9 @@ impl Discography for TheRentals {
             1 => {
                 let mut ep = the_rentals::Release {
                     id: String::from("1"),
-                    name: String::from("ep release one"),
+                    name: String::from("The Last Little Life EP"),
                     release_type: 2,
-                    release_date: String::from("some awesome first ep release date"),
+                    release_date: String::from("2007.08.14"),
                     track_listing: Vec::new(),
                 };
                 let mut track_listing = the_rentals::release::TrackListing {
@@ -112,13 +112,18 @@ impl Discography for TheRentals {
                 };
                 track_listing
                     .tracks
-                    .insert(String::from("one"), String::from("track one from ep 1"));
+                    .insert(String::from("1"), String::from("Last Romantic Day"));
+                track_listing.tracks.insert(
+                    String::from("2"),
+                    String::from("Little Bit of You in Everything"),
+                );
                 track_listing
                     .tracks
-                    .insert(String::from("two"), String::from("track two from ep 1"));
-                track_listing
-                    .tracks
-                    .insert(String::from("three"), String::from("track three from ep 1"));
+                    .insert(String::from("3"), String::from("Life Without a Brain"));
+                track_listing.tracks.insert(
+                    String::from("4"),
+                    String::from("Sweetness and Tenderness (New Version)"),
+                );
                 ep.track_listing.push(track_listing);
                 Ok(ep)
             }
