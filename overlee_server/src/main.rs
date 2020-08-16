@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use tonic::metadata::*;
 use tonic::Code;
 use tonic::{transport::Server, Request, Response, Status};
 
@@ -89,10 +90,17 @@ impl Discography for TheRentals {
     }
 
     async fn ep(&self, request: Request<GetEp>) -> Result<Response<Release>, Status> {
-        println!("Requesting Ep id {:?} ...", request.get_ref().ep_id);
-        let reply = match request.into_inner().ep_id {
+        println!("Incoming request from : {:?}", request.remote_addr());
+        println!("Requesting EP id : {:?}", request.get_ref().ep_id);
+        for v in request.metadata().values() {
+            match v {
+                ValueRef::Ascii(ref v) => println!("Request metadata : {:?} ", v),
+                ValueRef::Binary(ref v) => println!("Request metadata : {:?}", v),
+            }
+        }
+        let release = match request.into_inner().ep_id {
             1 => {
-                let mut reply = the_rentals::Release {
+                let mut ep = the_rentals::Release {
                     id: String::from("1"),
                     name: String::from("ep release one"),
                     release_type: 2,
@@ -111,11 +119,11 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(String::from("three"), String::from("track three from ep 1"));
-                reply.track_listing.push(track_listing);
-                Ok(reply)
+                ep.track_listing.push(track_listing);
+                Ok(ep)
             }
             2 => {
-                let mut reply = the_rentals::Release {
+                let mut ep = the_rentals::Release {
                     id: String::from("2"),
                     name: String::from("ep release 2"),
                     release_type: 2,
@@ -134,8 +142,8 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(String::from("three"), String::from("track three from ep 3"));
-                reply.track_listing.push(track_listing);
-                Ok(reply)
+                ep.track_listing.push(track_listing);
+                Ok(ep)
             }
             _ => {
                 let message = String::from("The requested EP was not found... please try again!");
@@ -144,9 +152,9 @@ impl Discography for TheRentals {
             }
         };
 
-        match reply {
-            Ok(resp) => Ok(Response::new(resp)),
-            Err(e) => Err(e),
+        match release {
+            Ok(response_ok) => Ok(Response::new(response_ok)),
+            Err(response_error) => Err(response_error),
         }
     }
 
