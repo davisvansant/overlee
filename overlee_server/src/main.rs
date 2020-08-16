@@ -23,21 +23,18 @@ impl Discography for TheRentals {
         let mut all_albums = the_rentals::all_albums::Album {
             album: HashMap::new(),
         };
-        all_albums.album.insert(
-            String::from("1995.10.24"),
-            String::from("Return of the Rentals"),
-        );
-        all_albums.album.insert(
-            String::from("1999.4.13"),
-            String::from("Seven more Minutes"),
-        );
-        all_albums.album.insert(
-            String::from("2014.8.22"),
-            String::from("Lost in Alphaville"),
-        );
         all_albums
             .album
-            .insert(String::from("2020.6.26"), String::from("Q36"));
+            .insert(String::from("1"), String::from("Return of the Rentals"));
+        all_albums
+            .album
+            .insert(String::from("2"), String::from("Seven more Minutes"));
+        all_albums
+            .album
+            .insert(String::from("3"), String::from("Lost in Alphaville"));
+        all_albums
+            .album
+            .insert(String::from("4"), String::from("Q36"));
         reply.albums.push(all_albums);
         Ok(Response::new(reply))
     }
@@ -72,20 +69,19 @@ impl Discography for TheRentals {
 
         let mut reply = the_rentals::AllEps { eps: Vec::new() };
         let mut all_eps = the_rentals::all_eps::Ep { ep: HashMap::new() };
+        all_eps
+            .ep
+            .insert(String::from("1"), String::from("The Last Little Life EP"));
         all_eps.ep.insert(
-            String::from("2007.08.14"),
-            String::from("The Last Little Life EP"),
-        );
-        all_eps.ep.insert(
-            String::from("2009.04.07"),
+            String::from("2"),
             String::from("Songs About Time: Chapter One: The Story of a Thousand Seasons Past"),
         );
         all_eps.ep.insert(
-            String::from("2009.07.07"),
+            String::from("3"),
             String::from("Songs About Time: Chapter Two: It's Time to Come Home"),
         );
         all_eps.ep.insert(
-            String::from("2009.10.20"),
+            String::from("4"),
             String::from("Songs About Time: Chapter Three: The Future"),
         );
         reply.eps.push(all_eps);

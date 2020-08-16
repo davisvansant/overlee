@@ -21,7 +21,7 @@ pub async fn get_albums(client: &mut DiscographyClient<Channel>) -> Result<(), B
     for release in message.albums {
         println!("All the albums!");
         for (k, v) in release.album.iter() {
-            println!(" ~ title . {} ~ release date . {}", v, k);
+            println!(" ~ title . {} ~ release . {}", v, k);
         }
     }
     Ok(())
@@ -38,7 +38,7 @@ pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<
     for release in message.eps {
         println!("All the eps!");
         for (k, v) in release.ep.iter() {
-            println!(" ~ title . {} ~ release date . {}", v, k);
+            println!(" ~ title . {} ~ release . {}", v, k);
         }
     }
     Ok(())
@@ -55,7 +55,7 @@ pub async fn get_singles(client: &mut DiscographyClient<Channel>) -> Result<(), 
     for release in message.singles {
         println!("All the singles!");
         for (k, v) in release.single.iter() {
-            println!(" ~ title . {} ~ release date . {}", v, k);
+            println!(" ~ title . {} ~ release . {}", v, k);
         }
     }
     Ok(())
