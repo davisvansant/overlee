@@ -130,9 +130,9 @@ impl Discography for TheRentals {
             2 => {
                 let mut ep = the_rentals::Release {
                     id: String::from("2"),
-                    name: String::from("ep release 2"),
+                    name: String::from("Songs About Time"),
                     release_type: 2,
-                    release_date: String::from("some awesome second ep release date"),
+                    release_date: String::from("2009.04.07, 2009.06.07, 2009.10.20"),
                     track_listing: Vec::new(),
                 };
                 let mut track_listing = the_rentals::release::TrackListing {
@@ -140,13 +140,130 @@ impl Discography for TheRentals {
                 };
                 track_listing
                     .tracks
-                    .insert(String::from("one"), String::from("track one from ep 2"));
+                    .insert(String::from("1"), String::from("Song of Remembering"));
                 track_listing
                     .tracks
-                    .insert(String::from("two"), String::from("track two from ep 2"));
+                    .insert(String::from("2"), String::from("Story of a Thousands Seasons Past"));
                 track_listing
                     .tracks
-                    .insert(String::from("three"), String::from("track three from ep 3"));
+                    .insert(String::from("3"), String::from("All I Have"));
+                track_listing
+                    .tracks
+                    .insert(String::from("4"), String::from("Seven Years"));
+                track_listing
+                    .tracks
+                    .insert(String::from("5"), String::from("Thought of Sound"));
+                track_listing
+                    .tracks
+                    .insert(String::from("6"), String::from("Fall Into the Eve"));
+                track_listing
+                    .tracks
+                    .insert(String::from("7"), String::from("Colorado"));
+                track_listing
+                    .tracks
+                    .insert(String::from("8"), String::from("A Thousand Season Past (Spanish Version)"));
+                track_listing
+                    .tracks
+                    .insert(String::from("9"), String::from("Its Time to Come Home"));
+                track_listing
+                    .tracks
+                    .insert(String::from("10"), String::from("No Desire #2"));
+                track_listing
+                    .tracks
+                    .insert(String::from("11"), String::from("Girls on the Metro"));
+                track_listing
+                    .tracks
+                    .insert(String::from("12"), String::from("Late Night Confessions"));
+                track_listing
+                    .tracks
+                    .insert(String::from("13"), String::from("One Last Prayer"));
+                track_listing
+                    .tracks
+                    .insert(String::from("14"), String::from("A Otra Cosa Mariposa"));
+                track_listing
+                    .tracks
+                    .insert(String::from("15"), String::from("Damaris"));
+                track_listing
+                    .tracks
+                    .insert(String::from("16"), String::from("Late Night Confessions (French Version)"));
+                track_listing
+                    .tracks
+                    .insert(String::from("17"), String::from("A Rose is a Rose"));
+                track_listing
+                    .tracks
+                    .insert(String::from("18"), String::from("Irrational Things"));
+                track_listing
+                    .tracks
+                    .insert(String::from("19"), String::from("Traces of Our Tears"));
+                track_listing
+                    .tracks
+                    .insert(String::from("20"), String::from("The Future"));
+                track_listing
+                    .tracks
+                    .insert(String::from("21"), String::from("Stardust"));
+                track_listing
+                    .tracks
+                    .insert(String::from("22"), String::from("Borrow Each Other"));
+                track_listing
+                    .tracks
+                    .insert(String::from("23"), String::from("Honey Life"));
+                track_listing
+                    .tracks
+                    .insert(String::from("24"), String::from("A Rose is a Rose (Japanese Version)"));
+                track_listing
+                    .tracks
+                    .insert(String::from("25"), String::from("October Thirteen"));
+                track_listing
+                    .tracks
+                    .insert(String::from("26"), String::from("Feburary Twenty Four"));
+                track_listing
+                    .tracks
+                    .insert(String::from("27"), String::from("March Ten (Part Two)"));
+                track_listing
+                    .tracks
+                    .insert(String::from("28"), String::from("November Twenty Four"));
+                track_listing
+                    .tracks
+                    .insert(String::from("29"), String::from("September Eight"));
+                track_listing
+                    .tracks
+                    .insert(String::from("30"), String::from("December One"));
+                track_listing
+                    .tracks
+                    .insert(String::from("31"), String::from("November Ten"));
+                track_listing
+                    .tracks
+                    .insert(String::from("32"), String::from("June Two"));
+                track_listing
+                    .tracks
+                    .insert(String::from("33"), String::from("Feburary Ten"));
+                track_listing
+                    .tracks
+                    .insert(String::from("34"), String::from("January Twenty"));
+                track_listing
+                    .tracks
+                    .insert(String::from("35"), String::from("March Ten (Part One)"));
+                track_listing
+                    .tracks
+                    .insert(String::from("36"), String::from("March Three"));
+                track_listing
+                    .tracks
+                    .insert(String::from("37"), String::from("December Thirty One"));
+                track_listing
+                    .tracks
+                    .insert(String::from("38"), String::from("July Twenty Eight"));
+                track_listing
+                    .tracks
+                    .insert(String::from("39"), String::from("July Twenty One"));
+                track_listing
+                    .tracks
+                    .insert(String::from("40"), String::from("May Twelve"));
+                track_listing
+                    .tracks
+                    .insert(String::from("41"), String::from("Feburary Three"));
+                track_listing
+                    .tracks
+                    .insert(String::from("42"), String::from("October Twenty Seven"));
                 ep.track_listing.push(track_listing);
                 Ok(ep)
             }
