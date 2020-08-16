@@ -141,9 +141,10 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(String::from("1"), String::from("Song of Remembering"));
-                track_listing
-                    .tracks
-                    .insert(String::from("2"), String::from("Story of a Thousands Seasons Past"));
+                track_listing.tracks.insert(
+                    String::from("2"),
+                    String::from("Story of a Thousands Seasons Past"),
+                );
                 track_listing
                     .tracks
                     .insert(String::from("3"), String::from("All I Have"));
@@ -159,9 +160,10 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(String::from("7"), String::from("Colorado"));
-                track_listing
-                    .tracks
-                    .insert(String::from("8"), String::from("A Thousand Season Past (Spanish Version)"));
+                track_listing.tracks.insert(
+                    String::from("8"),
+                    String::from("A Thousand Season Past (Spanish Version)"),
+                );
                 track_listing
                     .tracks
                     .insert(String::from("9"), String::from("Its Time to Come Home"));
@@ -183,9 +185,10 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(String::from("15"), String::from("Damaris"));
-                track_listing
-                    .tracks
-                    .insert(String::from("16"), String::from("Late Night Confessions (French Version)"));
+                track_listing.tracks.insert(
+                    String::from("16"),
+                    String::from("Late Night Confessions (French Version)"),
+                );
                 track_listing
                     .tracks
                     .insert(String::from("17"), String::from("A Rose is a Rose"));
@@ -207,9 +210,10 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(String::from("23"), String::from("Honey Life"));
-                track_listing
-                    .tracks
-                    .insert(String::from("24"), String::from("A Rose is a Rose (Japanese Version)"));
+                track_listing.tracks.insert(
+                    String::from("24"),
+                    String::from("A Rose is a Rose (Japanese Version)"),
+                );
                 track_listing
                     .tracks
                     .insert(String::from("25"), String::from("October Thirteen"));
