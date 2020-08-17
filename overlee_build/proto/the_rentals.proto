@@ -21,7 +21,7 @@ message Release {
   Type release_type = 3;
   string release_date = 4;
   message TrackListing {
-    map<string, string> tracks = 1;
+    map<uint32, string> tracks = 1;
   }
   repeated TrackListing track_listing = 5;
 }
