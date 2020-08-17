@@ -30,7 +30,7 @@ message GetAlbums {}
 
 message AllAlbums {
   message Album {
-    map<string, string> album = 1;
+    map<uint32, string> album = 1;
   }
   repeated Album albums = 1;
 }

@@ -26,16 +26,14 @@ impl Discography for TheRentals {
         };
         all_albums
             .album
-            .insert(String::from("1"), String::from("Return of the Rentals"));
+            .insert(1, String::from("Return of the Rentals"));
         all_albums
             .album
-            .insert(String::from("2"), String::from("Seven more Minutes"));
+            .insert(2, String::from("Seven more Minutes"));
         all_albums
             .album
-            .insert(String::from("3"), String::from("Lost in Alphaville"));
-        all_albums
-            .album
-            .insert(String::from("4"), String::from("Q36"));
+            .insert(3, String::from("Lost in Alphaville"));
+        all_albums.album.insert(4, String::from("Q36"));
         reply.albums.push(all_albums);
         Ok(Response::new(reply))
     }

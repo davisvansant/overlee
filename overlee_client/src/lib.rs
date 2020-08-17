@@ -21,7 +21,7 @@ pub async fn get_albums(client: &mut DiscographyClient<Channel>) -> Result<(), B
     for release in message.albums {
         println!("All the albums!");
         for (k, v) in release.album.iter() {
-            println!(" ~ title . {} ~ release . {}", v, k);
+            println!(" ~ release . {} ~ title . {}", k, v);
         }
     }
     Ok(())
