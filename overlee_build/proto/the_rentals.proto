@@ -43,7 +43,7 @@ message GetEps {}
 
 message AllEps {
   message Ep {
-    map<string, string> ep = 1;
+    map<uint32, string> ep = 1;
   }
   repeated Ep eps = 1;
 }

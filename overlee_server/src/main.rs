@@ -281,17 +281,17 @@ impl Discography for TheRentals {
         let mut all_eps = the_rentals::all_eps::Ep { ep: HashMap::new() };
         all_eps
             .ep
-            .insert(String::from("1"), String::from("The Last Little Life EP"));
+            .insert(1, String::from("The Last Little Life EP"));
         all_eps.ep.insert(
-            String::from("2"),
+            2,
             String::from("Songs About Time: Chapter One: The Story of a Thousand Seasons Past"),
         );
         all_eps.ep.insert(
-            String::from("3"),
+            3,
             String::from("Songs About Time: Chapter Two: It's Time to Come Home"),
         );
         all_eps.ep.insert(
-            String::from("4"),
+            4,
             String::from("Songs About Time: Chapter Three: The Future"),
         );
         reply.eps.push(all_eps);

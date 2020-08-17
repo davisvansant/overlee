@@ -50,7 +50,7 @@ pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<
     for release in message.eps {
         println!("All the eps!");
         for (k, v) in release.ep.iter() {
-            println!(" ~ title . {} ~ release . {}", v, k);
+            println!(" ~ release . {} ~ title . {}", k, v);
         }
     }
     Ok(())
