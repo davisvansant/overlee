@@ -1,11 +1,8 @@
-// use std::collections::HashMap;
 use std::error::Error;
-use tonic::{transport::Channel, Request, Response, Status};
+use tonic::transport::Channel;
 
 pub use the_rentals::discography_client::*;
-use the_rentals::{
-    AllAlbums, AllEps, AllSingles, GetAlbum, GetAlbums, GetEp, GetEps, GetSingles, Release,
-};
+use the_rentals::{GetAlbum, GetAlbums, GetEp, GetEps, GetSingles};
 
 #[derive(Default)]
 struct TheRentals;
