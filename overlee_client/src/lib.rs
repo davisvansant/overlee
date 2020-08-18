@@ -95,8 +95,20 @@ pub async fn get_ep(client: &mut DiscographyClient<Channel>) -> Result<(), Box<d
     println!("EP release_type : {:?}", message.release_type);
     println!("EP release date{:?}", message.release_date);
     for tracks in message.track_listing.iter() {
-        for (k, v) in tracks.tracks.iter() {
-            println!(" ~ track . {} ~ title . {}", k, v);
+        let mut sorted_tracks = Vec::new();
+        for track_id in tracks.tracks.keys() {
+            sorted_tracks.push(track_id);
+        }
+        sorted_tracks.sort();
+        for track_id in sorted_tracks {
+            println!(
+                " ~ track . {} ~ title . {}",
+                track_id,
+                tracks
+                    .tracks
+                    .get(&track_id)
+                    .expect("Track listing not found")
+            );
         }
     }
     Ok(())
