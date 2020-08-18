@@ -19,9 +19,18 @@ pub async fn get_albums(client: &mut DiscographyClient<Channel>) -> Result<(), B
     let response = client.albums(request).await?;
     let message = response.into_inner();
     for release in message.albums {
+        let mut sorted = Vec::new();
         println!("All the albums!");
-        for (k, v) in release.album.iter() {
-            println!(" ~ release . {} ~ title . {}", k, v);
+        for k in release.album.keys() {
+            sorted.push(k);
+        }
+        sorted.sort();
+        for x in sorted {
+            println!(
+                " ~ release . {} ~ title . {}",
+                x,
+                release.album.get(&x).expect("Album not found")
+            );
         }
     }
     Ok(())
