@@ -57,9 +57,18 @@ pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<
     let response = client.eps(request).await?;
     let message = response.into_inner();
     for release in message.eps {
+        let mut sorted_eps = Vec::new();
         println!("All the eps!");
-        for (k, v) in release.ep.iter() {
-            println!(" ~ release . {} ~ title . {}", k, v);
+        for release_id in release.ep.keys() {
+            sorted_eps.push(release_id);
+        }
+        sorted_eps.sort();
+        for release_id in sorted_eps {
+            println!(
+                " ~ release . {} ~ title . {}",
+                release_id,
+                release.ep.get(&release_id).expect("Album not found")
+            );
         }
     }
     Ok(())
