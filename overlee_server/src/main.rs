@@ -437,78 +437,79 @@ impl Discography for TheRentals {
 
         all_singles
             .single
-            .insert(String::from("1995.1"), String::from("Friends of P."));
+            .insert(String::from("1995.01"), String::from("Friends of P."));
         all_singles
             .single
-            .insert(String::from("1996.1"), String::from("Waiting"));
+            .insert(String::from("1996.01"), String::from("Waiting"));
         all_singles
             .single
-            .insert(String::from("1999.1"), String::from("Getting By"));
+            .insert(String::from("1999.01"), String::from("Getting By"));
         all_singles
             .single
-            .insert(String::from("2008.1"), String::from("Colorado"));
+            .insert(String::from("2008.01"), String::from("Colorado"));
         all_singles
             .single
-            .insert(String::from("2014.1"), String::from("Thought of Sound"));
+            .insert(String::from("2014.01"), String::from("Thought of Sound"));
         all_singles
             .single
-            .insert(String::from("2014.2"), String::from("1000 Seasons"));
+            .insert(String::from("2014.02"), String::from("1000 Seasons"));
         all_singles.single.insert(
-            String::from("2017.1"),
+            String::from("2017.01"),
             String::from("Elon Musk is Making Me Sad"),
         );
         all_singles
             .single
-            .insert(String::from("2019.1"), String::from("Spaceships"));
+            .insert(String::from("2019.01"), String::from("Spaceships"));
         all_singles
             .single
-            .insert(String::from("2019.2"), String::from("Forgotten Astronaut"));
+            .insert(String::from("2019.02"), String::from("Forgotten Astronaut"));
         all_singles
             .single
-            .insert(String::from("2019.3"), String::from("9th Configuration"));
+            .insert(String::from("2019.03"), String::from("9th Configuration"));
         all_singles.single.insert(
-            String::from("2019.4"),
+            String::from("2019.04"),
             String::from("Breaking and Breaking and Breaking"),
         );
         all_singles
             .single
-            .insert(String::from("2019.5"), String::from("Invasion Night"));
+            .insert(String::from("2019.05"), String::from("Invasion Night"));
         all_singles
             .single
-            .insert(String::from("2020.1"), String::from("Nowhere Girl"));
+            .insert(String::from("2020.01"), String::from("Nowhere Girl"));
         all_singles
             .single
-            .insert(String::from("2020.2"), String::from("Great Big Blue"));
+            .insert(String::from("2020.02"), String::from("Great Big Blue"));
         all_singles.single.insert(
-            String::from("2020.3"),
+            String::from("2020.03"),
             String::from("Above This Broken World"),
         );
         all_singles
             .single
-            .insert(String::from("2020.4"), String::from("Teen Beat Cosmonaut"));
+            .insert(String::from("2020.04"), String::from("Teen Beat Cosmonaut"));
         all_singles
             .single
-            .insert(String::from("2020.5"), String::from("Another World"));
+            .insert(String::from("2020.05"), String::from("Another World"));
         all_singles
             .single
-            .insert(String::from("2020.6"), String::from("Conspiracy"));
+            .insert(String::from("2020.06"), String::from("Conspiracy"));
         all_singles.single.insert(
-            String::from("2020.7"),
+            String::from("2020.07"),
             String::from("Elon Musk Is Making Me Sad (Q36 version)"),
         );
         all_singles.single.insert(
-            String::from("2020.8"),
+            String::from("2020.08"),
             String::from("Information (and the Island in the Sky)"),
         );
         all_singles
             .single
-            .insert(String::from("2020.9"), String::from("Machine Love"));
+            .insert(String::from("2020.09"), String::from("Machine Love"));
         all_singles
             .single
-            .insert(String::from("2020.10"), String::from("Goodbye, Steve"));
-        all_singles
-            .single
-            .insert(String::from("2020.11"), String::from("Shake Your Diamonds"));
+            .insert(String::from("20200.10"), String::from("Goodbye, Steve"));
+        all_singles.single.insert(
+            String::from("20200.11"),
+            String::from("Shake Your Diamonds"),
+        );
         reply.singles.push(all_singles);
         Ok(Response::new(reply))
     }

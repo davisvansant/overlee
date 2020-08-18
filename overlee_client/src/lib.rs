@@ -118,10 +118,19 @@ pub async fn get_singles(client: &mut DiscographyClient<Channel>) -> Result<(), 
     let request = tonic::Request::new(GetSingles {});
     let response = client.singles(request).await?;
     let message = response.into_inner();
-    for release in message.singles {
+    for single in message.singles {
         println!("All the singles!");
-        for (k, v) in release.single.iter() {
-            println!(" ~ title . {} ~ release . {}", v, k);
+        let mut sorted_singles = Vec::new();
+        for release_date in single.single.keys() {
+            sorted_singles.push(release_date);
+        }
+        sorted_singles.sort();
+        for release_date in sorted_singles {
+            println!(
+                " ~ release . {} ~ title . {}",
+                release_date,
+                single.single.get(release_date).expect("Single not found")
+            );
         }
     }
     Ok(())
