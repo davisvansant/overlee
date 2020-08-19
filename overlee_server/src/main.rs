@@ -18,7 +18,16 @@ pub mod the_rentals {
 #[tonic::async_trait]
 impl Discography for TheRentals {
     async fn albums(&self, request: Request<GetAlbums>) -> Result<Response<AllAlbums>, Status> {
-        println!("All Albums! {:?}", request);
+        println!("Incoming All Albums request ...");
+        println!(" ~ IP address : {:?}", request.remote_addr().unwrap().ip());
+        println!(" ~ Port : {:?}", request.remote_addr().unwrap().port());
+        println!(" ~ Request Info : {:?}", request.get_ref());
+        for v in request.metadata().values() {
+            match v {
+                ValueRef::Ascii(ref v) => println!("Request metadata : {:?} ", v),
+                ValueRef::Binary(ref v) => println!("Request metadata : {:?}", v),
+            }
+        }
 
         let mut reply = the_rentals::AllAlbums { albums: Vec::new() };
         let mut all_albums = the_rentals::all_albums::Album {
