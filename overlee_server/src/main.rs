@@ -48,12 +48,14 @@ impl Discography for TheRentals {
     }
 
     async fn album(&self, request: Request<GetAlbum>) -> Result<Response<Release>, Status> {
-        println!("Incoming request from : {:?}", request.remote_addr());
-        println!("Requesting Album id : {:?}", request.get_ref().album_id);
+        println!("Incoming Album Release request ...");
+        println!(" ~ IP address : {:?}", request.remote_addr().unwrap().ip());
+        println!(" ~ Port : {:?}", request.remote_addr().unwrap().port());
+        println!(" ~ Requesting Album id : {:?}", request.get_ref().album_id);
         for v in request.metadata().values() {
             match v {
-                ValueRef::Ascii(ref v) => println!("Request metadata : {:?} ", v),
-                ValueRef::Binary(ref v) => println!("Request metadata : {:?}", v),
+                ValueRef::Ascii(ref v) => println!(" ~ Request metadata : {:?}", v),
+                ValueRef::Binary(ref v) => println!(" ~ Request metadata : {:?}", v),
             }
         }
         let release = match request.into_inner().album_id {
