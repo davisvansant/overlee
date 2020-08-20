@@ -272,12 +272,14 @@ impl Discography for TheRentals {
     }
 
     async fn ep(&self, request: Request<GetEp>) -> Result<Response<Release>, Status> {
-        println!("Incoming request from : {:?}", request.remote_addr());
-        println!("Requesting EP id : {:?}", request.get_ref().ep_id);
+        println!("Incoming EP Release request ...");
+        println!(" ~ IP address : {:?}", request.remote_addr().unwrap().ip());
+        println!(" ~ Port : {:?}", request.remote_addr().unwrap().port());
+        println!(" ~ Request Info : {:?}", request.get_ref());
         for v in request.metadata().values() {
             match v {
-                ValueRef::Ascii(ref v) => println!("Request metadata : {:?} ", v),
-                ValueRef::Binary(ref v) => println!("Request metadata : {:?}", v),
+                ValueRef::Ascii(ref v) => println!(" ~ Request metadata : {:?} ", v),
+                ValueRef::Binary(ref v) => println!(" ~ Request metadata : {:?}", v),
             }
         }
         let release = match request.into_inner().ep_id {
