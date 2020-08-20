@@ -441,7 +441,10 @@ impl Discography for TheRentals {
     }
 
     async fn singles(&self, request: Request<GetSingles>) -> Result<Response<AllSingles>, Status> {
-        println!("Singles! {:?}", request);
+        println!("Incoming AllSingles request ...");
+        println!(" ~ IP address : {:?}", request.remote_addr().unwrap().ip());
+        println!(" ~ Port : {:?}", request.remote_addr().unwrap().port());
+        println!(" ~ Request Info : {:?}", request.get_ref());
 
         let mut reply = the_rentals::AllSingles {
             singles: Vec::new(),
