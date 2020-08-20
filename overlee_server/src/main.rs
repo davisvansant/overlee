@@ -244,7 +244,11 @@ impl Discography for TheRentals {
     }
 
     async fn eps(&self, request: Request<GetEps>) -> Result<Response<AllEps>, Status> {
-        println!("All Eps! {:?}", request);
+        // println!("All Eps! {:?}", request);
+        println!("Incoming All Eps request ...");
+        println!(" ~ IP address : {:?}", request.remote_addr().unwrap().ip());
+        println!(" ~ Port : {:?}", request.remote_addr().unwrap().port());
+        println!(" ~ Request Info : {:?}", request.get_ref());
 
         let mut reply = the_rentals::AllEps { eps: Vec::new() };
         let mut all_eps = the_rentals::all_eps::Ep { ep: HashMap::new() };
