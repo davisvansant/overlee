@@ -33,8 +33,11 @@ pub async fn get_albums(client: &mut DiscographyClient<Channel>) -> Result<(), B
     Ok(())
 }
 
-pub async fn get_album(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
-    let request = tonic::Request::new(GetAlbum { album_id: 1 });
+pub async fn get_album(
+    album_id: u32,
+    client: &mut DiscographyClient<Channel>,
+) -> Result<(), Box<dyn Error>> {
+    let request = tonic::Request::new(GetAlbum { album_id });
     let response = client.album(request).await?;
     let message = response.into_inner();
     println!("Album id : {:?}", message.id);
