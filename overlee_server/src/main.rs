@@ -24,8 +24,8 @@ impl Discography for TheRentals {
         println!(" ~ Request Info : {:?}", request.get_ref());
         for v in request.metadata().values() {
             match v {
-                ValueRef::Ascii(ref v) => println!("Request metadata : {:?} ", v),
-                ValueRef::Binary(ref v) => println!("Request metadata : {:?}", v),
+                ValueRef::Ascii(ref v) => println!(" ~ Request metadata : {:?} ", v),
+                ValueRef::Binary(ref v) => println!(" ~ Request metadata : {:?}", v),
             }
         }
 
