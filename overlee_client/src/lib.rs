@@ -40,16 +40,18 @@ pub async fn get_album(
     let request = tonic::Request::new(GetAlbum { album_id });
     let response = client.album(request).await?;
     let message = response.into_inner();
-    println!("Album id : {:?}", message.id);
-    println!("Album name :{:?}", message.name);
-    println!("Album release_type : {:?}", message.release_type);
-    println!("Album release date{:?}", message.release_date);
+    println!("Album release lookup!");
+    println!(" ~ Release ID . {}", message.id);
+    println!(" ~ Release name . {}", message.name);
+    println!(" ~ Release Type . {}", message.release_type);
+    println!(" ~ Release Date . {}", message.release_date);
     for tracks in message.track_listing.iter() {
         let mut sorted_tracks = Vec::new();
         for track_id in tracks.tracks.keys() {
             sorted_tracks.push(track_id);
         }
         sorted_tracks.sort();
+        println!("Track Listing");
         for track_id in sorted_tracks {
             println!(
                 " ~ track . {} ~ title . {}",
@@ -93,16 +95,18 @@ pub async fn get_ep(
     let request = tonic::Request::new(GetEp { ep_id });
     let response = client.ep(request).await?;
     let message = response.into_inner();
-    println!("EP id : {:?}", message.id);
-    println!("EP name :{:?}", message.name);
-    println!("EP release_type : {:?}", message.release_type);
-    println!("EP release date{:?}", message.release_date);
+    println!("EP Release lookup!");
+    println!(" ~ Release ID . {}", message.id);
+    println!(" ~ Release name . {}", message.name);
+    println!(" ~ Release type . {}", message.release_type);
+    println!(" ~ Release date . {}", message.release_date);
     for tracks in message.track_listing.iter() {
         let mut sorted_tracks = Vec::new();
         for track_id in tracks.tracks.keys() {
             sorted_tracks.push(track_id);
         }
         sorted_tracks.sort();
+        println!("Track Listing");
         for track_id in sorted_tracks {
             println!(
                 " ~ track . {} ~ title . {}",
