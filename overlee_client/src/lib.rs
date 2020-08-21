@@ -86,8 +86,11 @@ pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<
     Ok(())
 }
 
-pub async fn get_ep(client: &mut DiscographyClient<Channel>) -> Result<(), Box<dyn Error>> {
-    let request = tonic::Request::new(GetEp { ep_id: 1 });
+pub async fn get_ep(
+    ep_id: u32,
+    client: &mut DiscographyClient<Channel>,
+) -> Result<(), Box<dyn Error>> {
+    let request = tonic::Request::new(GetEp { ep_id });
     let response = client.ep(request).await?;
     let message = response.into_inner();
     println!("EP id : {:?}", message.id);
