@@ -312,9 +312,11 @@ impl Discography for TheRentals {
             2 => {
                 let mut ep = the_rentals::Release {
                     id: String::from("2"),
-                    name: String::from("Songs About Time"),
+                    name: String::from(
+                        "Songs About Time - Chapter One: The Story of a Thousand Seasons Past",
+                    ),
                     release_type: 2,
-                    release_date: String::from("2009.04.07, 2009.06.07, 2009.10.20"),
+                    release_date: String::from("2009.04.07"),
                     track_listing: Vec::new(),
                 };
                 let mut track_listing = the_rentals::release::TrackListing {
@@ -338,6 +340,20 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(8, String::from("A Thousand Season Past (Spanish Version)"));
+                ep.track_listing.push(track_listing);
+                Ok(ep)
+            }
+            3 => {
+                let mut ep = the_rentals::Release {
+                    id: String::from("3"),
+                    name: String::from("Songs About Time - Chapter Two: Its Time to Come Home"),
+                    release_type: 2,
+                    release_date: String::from("2009.06.07"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
                 track_listing
                     .tracks
                     .insert(9, String::from("Its Time to Come Home"));
@@ -360,6 +376,20 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(16, String::from("Late Night Confessions (French Version)"));
+                ep.track_listing.push(track_listing);
+                Ok(ep)
+            }
+            4 => {
+                let mut ep = the_rentals::Release {
+                    id: String::from("4"),
+                    name: String::from("Songs About Time - Chapter Three: The Future"),
+                    release_type: 2,
+                    release_date: String::from("2009.10.20"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
                 track_listing
                     .tracks
                     .insert(17, String::from("A Rose is a Rose"));
@@ -378,6 +408,20 @@ impl Discography for TheRentals {
                 track_listing
                     .tracks
                     .insert(24, String::from("A Rose is a Rose (Japanese Version)"));
+                ep.track_listing.push(track_listing);
+                Ok(ep)
+            }
+            5 => {
+                let mut ep = the_rentals::Release {
+                    id: String::from("5"),
+                    name: String::from("Songs About Time - Chapter Four: Tokyo Blues"),
+                    release_type: 2,
+                    release_date: String::from("2011"),
+                    track_listing: Vec::new(),
+                };
+                let mut track_listing = the_rentals::release::TrackListing {
+                    tracks: HashMap::new(),
+                };
                 track_listing
                     .tracks
                     .insert(25, String::from("October Thirteen"));
