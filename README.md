@@ -2,7 +2,13 @@
 
 ~ o v e r l e e  
 
+A [Rentals](https://en.wikipedia.org/wiki/The_Rentals) Discography built with `gRPC` and `Rust`
+
 #### Testing
+
+Start the Server - `cargo run --bin overlee_server --release`
+
+Run the Client - `cargo run --bin overlee --release`
 
 - Albums Service
 ```
