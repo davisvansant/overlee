@@ -8,4 +8,4 @@ edition = "2018"
 
 [dependencies]
 overlee_client = { path = "../overlee_client" }
-tokio = { version = "0.2.22", features = ["macros", "sync", "stream", "time"] }
+tokio = { version = "1.4.0", features = ["macros", "sync", "time"] }
