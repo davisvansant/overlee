@@ -26,7 +26,7 @@ pub async fn get_albums(client: &mut DiscographyClient<Channel>) -> Result<(), B
             println!(
                 " ~ release . {} ~ title . {}",
                 x,
-                release.album.get(&x).expect("Album not found")
+                release.album.get(x).expect("Album not found")
             );
         }
     }
@@ -58,7 +58,7 @@ pub async fn get_album(
                 track_id,
                 tracks
                     .tracks
-                    .get(&track_id)
+                    .get(track_id)
                     .expect("Track listing not found")
             );
         }
@@ -81,7 +81,7 @@ pub async fn get_eps(client: &mut DiscographyClient<Channel>) -> Result<(), Box<
             println!(
                 " ~ release . {} ~ title . {}",
                 release_id,
-                release.ep.get(&release_id).expect("Album not found")
+                release.ep.get(release_id).expect("Album not found")
             );
         }
     }
@@ -113,7 +113,7 @@ pub async fn get_ep(
                 track_id,
                 tracks
                     .tracks
-                    .get(&track_id)
+                    .get(track_id)
                     .expect("Track listing not found")
             );
         }
