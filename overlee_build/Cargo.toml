@@ -8,6 +8,6 @@ edition = "2021"
 
 # currently disabled rustfmt for testing - the compiled proto isnt pretty, but its working
 [build-dependencies.tonic-build]
-version = "0.4.2"
+version = "0.9.2"
 default-features = false
 features = ["transport", "prost"]
